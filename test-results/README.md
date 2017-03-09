@@ -1,0 +1,1 @@
+Test results are stored in this directory.

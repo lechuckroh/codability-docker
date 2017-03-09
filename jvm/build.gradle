@@ -1,0 +1,48 @@
+apply plugin: 'groovy'
+apply plugin: 'java'
+apply plugin: 'scala'
+
+repositories {
+    jcenter()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+sourceSets {
+    main {
+        groovy {
+            srcDirs = ['sample/main/groovy']
+        }
+        java {
+            srcDirs = ['sample/main/java']
+        }
+        scala {
+            srcDirs = ['sample/main/scala']
+        }
+    }
+    test {
+        groovy {
+            srcDirs = ['sample/test/groovy']
+        }
+        java {
+            srcDirs = ['sample/test/java']
+        }
+        scala {
+            srcDirs = ['sample/test/scala']
+        }
+    }
+}
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.9'
+    compile 'org.scala-lang:scala-library:2.12.1'
+    compile 'org.clojure:clojure:1.8.0'
+    testCompile('org.spockframework:spock-core:1.1-groovy-2.4-rc-3')
+}
+
+test {
+    reports {
+        junitXml.enabled = true
+        html.enabled = false
+    }
+}
